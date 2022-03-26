@@ -8,6 +8,7 @@ const EventSourcing = () => {
 
     useEffect(() => {
         subscribe()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const subscribe = async () => {

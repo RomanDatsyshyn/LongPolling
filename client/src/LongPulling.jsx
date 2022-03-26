@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from "axios";
 
 const LongPulling = () => {
@@ -7,13 +7,13 @@ const LongPulling = () => {
 
 
     useEffect(() => {
-        subscribe()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        subscribe();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const subscribe = async () => {
         try {
-            const {data} = await axios.get('http://localhost:5000/get-messages')
+            const { data } = await axios.get('http://localhost:5000/get-messages')
             setMessages(prev => [data, ...prev])
             await subscribe()
         } catch (e) {
@@ -34,7 +34,7 @@ const LongPulling = () => {
         <div className="center">
             <div>
                 <div className="form">
-                    <input value={value} onChange={e => setValue(e.target.value)} type="text"/>
+                    <input value={value} onChange={e => setValue(e.target.value)} type="text" />
                     <button onClick={sendMessage}>SEND</button>
                 </div>
                 <div className="messages">

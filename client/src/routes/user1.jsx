@@ -8,6 +8,7 @@ const User1 = () => {
 
     useEffect(() => {
         subscribe()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const subscribe = async () => {

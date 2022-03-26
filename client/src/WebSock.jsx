@@ -1,5 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
-import axios from "axios";
+import React, { useRef, useState} from 'react';
 
 const WebSock = () => {
     const [messages, setMessages] = useState([]);
@@ -25,10 +24,10 @@ const WebSock = () => {
             setMessages(prev => [message, ...prev])
         }
         socket.current.onclose= () => {
-            console.log('Socket закрыт')
+            console.log('Socket closed')
         }
         socket.current.onerror = () => {
-            console.log('Socket произошла ошибка')
+            console.log('Socket happends error')
         }
     }
 
@@ -52,7 +51,7 @@ const WebSock = () => {
                         value={username}
                         onChange={e => setUsername(e.target.value)}
                         type="text"
-                        placeholder="Введите ваше имя"/>
+                        placeholder="Enter your name"/>
                     <button onClick={connect}>Sign In</button>
                 </div>
             </div>

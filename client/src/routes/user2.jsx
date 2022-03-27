@@ -13,7 +13,13 @@ const User2 = () => {
 
     const subscribe = async () => {
         try {
-            const {data} = await axios.get('http://localhost:5000/get-messages/2')
+            const {data} = await axios.get('http://localhost:3001/feed/serviceSeller/getOrders',
+        {
+          headers: {
+            Authorization:
+              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyM2RhYzEyZjExOWFjYTRlMDEwODYxMyIsImlhdCI6MTY0ODM1NTQyNiwiZXhwIjoxNjQ4NDQxODI2fQ.xtXaa2iGH8FdG6uvtjP-W3bJZg_FY5l5wdhjoMvRhrE",
+          },
+        })
             setMessages(prev => [data, ...prev])
             await subscribe()
         } catch (e) {
@@ -24,9 +30,16 @@ const User2 = () => {
     }
 
     const sendMessage = async () => {
-        await axios.post('http://localhost:5000/new-messages/2', {
+        await axios.post('http://localhost:3001/feed/serviceSeller/sendOffer', {
+            userId: "623372b49f80cd1cef4a17bd",
             message: value,
             id: Date.now()
+        },
+        {
+          headers: {
+            Authorization:
+              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyM2RhYzEyZjExOWFjYTRlMDEwODYxMyIsImlhdCI6MTY0ODM1NTQyNiwiZXhwIjoxNjQ4NDQxODI2fQ.xtXaa2iGH8FdG6uvtjP-W3bJZg_FY5l5wdhjoMvRhrE",
+          },
         })
     }
 

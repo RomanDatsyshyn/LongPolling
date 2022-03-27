@@ -20,7 +20,7 @@ const User2 = () => {
               "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyM2RhYzEyZjExOWFjYTRlMDEwODYxMyIsImlhdCI6MTY0ODM1NTQyNiwiZXhwIjoxNjQ4NDQxODI2fQ.xtXaa2iGH8FdG6uvtjP-W3bJZg_FY5l5wdhjoMvRhrE",
           },
         })
-            setMessages(prev => [data, ...prev])
+            setMessages(data)
             await subscribe()
         } catch (e) {
             setTimeout(() => {
@@ -42,7 +42,7 @@ const User2 = () => {
           },
         })
     }
-
+    
     return (
         <div className="center">
             <div>
@@ -52,8 +52,8 @@ const User2 = () => {
                 </div>
                 <div className="messages">
                     {messages.map(mess =>
-                        <div className="message" key={mess.id}>
-                            {mess.message}
+                        <div className="message">
+                            {mess}
                         </div>
                     )}
                 </div>

@@ -9,6 +9,7 @@ import User2 from "./routes/user2";
 
 import WsUser1 from "./routes/WsUser1";
 import WsUser2 from "./routes/WsUser2";
+import WsUser3 from "./routes/WsUser3";
 
 ReactDOM.render(
   <BrowserRouter>
@@ -18,6 +19,7 @@ ReactDOM.render(
       <Route path="user2" element={<User2 />} />
       <Route path="ws/user1" element={<WsUser1 />} />
       <Route path="ws/user2" element={<WsUser2 />} />
+      <Route path="ws/user3" element={<WsUser3 />} />
     </Routes>
   </BrowserRouter>,
   document.getElementById("root")

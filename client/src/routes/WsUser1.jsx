@@ -1,34 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 const { io } = require("socket.io-client");
 
 const WsUser1 = () => {
   const socket = io("ws://localhost:3001");
 
   const [value, setValue] = useState("");
-  const [users, setUsers] = useState([]);
   const [messages, setMessages] = useState([]);
 
-  useEffect(() => {
-    console.log(users, "users");
-  }, [users]);
-
-  useEffect(() => {
-    console.log(messages, "messages");
-  }, [messages]);
-
   const connect = () => {
-    socket.emit("join", { username: "Roman", room: "806" });
-    socket.on("getUsers", ({ users }) => setUsers(users));
-    socket.on("message", (message) =>
-      setMessages((prev) => [message, ...prev])
-    );
+    socket.emit("join", { room: "userFeed-62486b2ccc97633ca1a504c4" });
+    socket.on("message", (messages) => setMessages(messages));
   };
 
   const sendMessage = () => {
-    socket.emit("chatMessage", {
-      username: "Roman",
-      room: "806",
-      msg: value,
+    socket.emit("sendUserOrderToServiceSellers", {
+      userId: "62486b2ccc97633ca1a504c4",
+      serviceId: "623da65073deea0ebf9ba44d",
     });
   };
 
@@ -47,9 +34,7 @@ const WsUser1 = () => {
         <div className="messages">
           {messages.map((msg, index) => (
             <div key={index}>
-              <div className="message">
-                {msg.username} - {msg.text}
-              </div>
+              <div className="message">{msg}</div>
             </div>
           ))}
         </div>

@@ -8,14 +8,14 @@ const WsUser2 = () => {
   const [messages, setMessages] = useState([]);
 
   const connect = () => {
-    socket.emit("join", { room: "serviceSellerFeed-623dac12f119aca4e0108613" });
+    socket.emit("join", { room: "serviceSellerFeed-62528a7938fc9299aa8b9306" });
     socket.on("message", (messages) => setMessages(messages));
   };
 
   const sendMessage = () => {
     socket.emit("sendServiceSellerOfferToUser", {
       userId: "62486b2ccc97633ca1a504c4",
-      serviceSellerId: "623dac12f119aca4e0108613",
+      serviceSellerId: "62528a7938fc9299aa8b9306",
     });
   };
 
